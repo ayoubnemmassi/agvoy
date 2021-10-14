@@ -41,7 +41,7 @@ class ReservationController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($reservation);
             $entityManager->flush();
-
+            $this->get('session')->getFlashBag()->add('message', 'bien ajouté');
             return $this->redirectToRoute('reservation_index', [], Response::HTTP_SEE_OTHER);
         //}
 

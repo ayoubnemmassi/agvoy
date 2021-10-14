@@ -38,7 +38,7 @@ class OwnerController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($owner);
             $entityManager->flush();
-
+            $this->get('session')->getFlashBag()->add('message', 'bien ajouté');
             return $this->redirectToRoute('owner_index', [], Response::HTTP_SEE_OTHER);
         }
 

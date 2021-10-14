@@ -38,7 +38,7 @@ class RegionController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($region);
             $entityManager->flush();
-
+            $this->get('session')->getFlashBag()->add('message', 'bien ajouté');
             return $this->redirectToRoute('region_index', [], Response::HTTP_SEE_OTHER);
         }
 

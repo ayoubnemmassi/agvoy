@@ -36,7 +36,13 @@
 						{% if is_granted('ROLE_ADMIN') %}
 						<li><a href="{{path('dashboard')}}">dashboard</a></li>
 						{% endif %}
-						<li style="padding-left: 570px;" ><a href="{{path('app_login')}}">login</a></li>
+						{% if app.user %}
+					<li  style="padding-left: 570px;"><a href="{{path('user_show',{'id':app.user.id})}}">{{app.user.firstname}}</a></li>
+					{% else %}
+					<li style="padding-left: 570px;" ><a href="{{path('app_login')}}">login</a></li>
+
+					{% endif %}
+						
 						<li><a href="{{path('app_logout')}}">logout</a></li>
 					</ul>
 				</nav>
@@ -62,7 +68,15 @@
 					<li><a href="#">Rooms</a></li>
 					<li><a href="blog.html">Blog</a></li>
 					<li><a href="contact.html">Contact</a></li>
+					{% if is_granted('ROLE_ADMIN') %}
+						<li><a href="{{path('dashboard')}}">dashboard</a></li>
+						{% endif %}
+					{% if app.user %}
+					<li><a href="{{path('app_login')}}">{{app.user.firstname}}</a></li>
+					{% else %}
 					<li><a href="{{path('app_login')}}">login</a></li>
+
+					{% endif %}
 					<li><a href="contact.html">logout</a></li>
 
 				</ul>

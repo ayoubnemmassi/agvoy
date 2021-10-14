@@ -19,7 +19,8 @@ use SymfonyCasts\Bundle\VerifyEmail\Exception\VerifyEmailExceptionInterface;
 class RegistrationController extends AbstractController
 {
     private $emailVerifier;
-
+ 
+     private User $currentuser;
     public function __construct(EmailVerifier $emailVerifier)
     {
         $this->emailVerifier = $emailVerifier;
@@ -46,7 +47,13 @@ class RegistrationController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
-
+            $this->get('session')->getFlashBag()->add('message', 'bien ajouté');
+            //in_array('ROLE_ADMIN', $user->getRoles())
+            $currentuser = $this->container->get('security.token_storage')->getToken()->getUser();
+            if(!is_string($currentuser)){ 
+                if(in_array('ROLE_ADMIN', $currentuser->getRoles())){return $this->redirectToRoute('user_index', [], Response::HTTP_SEE_OTHER);}}
+           
+            
             // generate a signed url and email it to the user
           /*  $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
                 (new TemplatedEmail())

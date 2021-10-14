@@ -3,7 +3,23 @@
 {% block title %}User index{% endblock %}
 
 {% block body %}
-    <h1>User index</h1>
+{% block alerts %}
+{% for type, messages in app.session.flashBag.all %}
+  {% for message in messages %}
+      {%if type == 'error'%} {% set type = 'danger' %} {%endif%}
+      {%if type == 'message'%} {% set type = 'info' %} {%endif%}
+      {# Bootstrap alert, see http://getbootstrap.com/components/#alerts #}
+      <div class="alert alert-{{ type }} alert-dismissible fade show" role="alert">
+          <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+              <span class="sr-only">Close</span>
+          </button>
+          <p>{{ message|raw }}</p>
+      </div>
+  {% endfor %}
+{% endfor %}
+{% endblock %} 
+    <h1>User index</h1>     
 
     <table class="table">
         <thead>

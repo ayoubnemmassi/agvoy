@@ -46,8 +46,21 @@
                 <th>Image</th>
                 <td><img src="{{ vich_uploader_asset(room, 'imageFile') }}"/></td>
             </tr> 
+            <tr>
+                <th>comment</th>
+                <td>
+                    <ul>
+                {% for comment in room.commentaires  %}
+              
+               <li> {{ comment.user.firstname }} : {{comment.comment}}</li>
+                {% endfor %}
+            </ul>
+            </td>
+            </tr>
         </tbody>
     </table>
+    <a href="{{ path('commentaire_new', {'id': room.id}) }}">ajouter un commnetaire</a><br>
+    
 
     <a href="{{ path('room_index') }}">back to list</a>
 

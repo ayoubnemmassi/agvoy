@@ -44,7 +44,7 @@ class RoomController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($room);
             $entityManager->flush();
-
+            $this->get('session')->getFlashBag()->add('message', 'bien ajouté');
             return $this->redirectToRoute('room_index', [], Response::HTTP_SEE_OTHER);
         }
 
