@@ -34,7 +34,13 @@ class RoomController extends AbstractController
         $form = $this->createForm( RoomType::class, $room);
         $form->handleRequest($request);
 
+
         if ($form->isSubmitted() && $form->isValid()) {
+            $imagefile = $room->getImageFile();
+            if($imagefile) {
+                $mimetype = $imagefile->getMimeType();
+                $room->setContentType($mimetype);
+            }
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($room);
             $entityManager->flush();
@@ -53,6 +59,7 @@ class RoomController extends AbstractController
      */
     public function show(Room $room): Response
     {
+     
         return $this->render('room/show.html.twig', [
             'room' => $room,
         ]);

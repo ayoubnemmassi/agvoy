@@ -5,3 +5,6 @@ bootstrap_menu:
         owner:
           label: 'Tasks'
           route: 'owner_index'
+        logout:
+          label: 'logout'
+          route: 'app_logout'

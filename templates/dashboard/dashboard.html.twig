@@ -1,0 +1,58 @@
+{% extends 'base.html.twig'%}
+{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+
+  <title>Frontend Mentor | Four card feature section</title>
+  <link rel="stylesheet" href="styles.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,400;0,600;1,200;1,400;1,600&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+ 
+  <div class="row1-container">
+    <div class="box box-down cyan">
+      <h2>Users</h2>
+      <p>Monitor your users</p>
+      <img src="https://assets.codepen.io/2301174/icon-supervisor.svg" alt="">
+      <a href="{{path('user_index')}}" class="btn btn-primary">Enter</a>
+    </div>
+
+    <div class="box red">
+      <h2>Regions</h2>
+      <p>Monitor  regions</p>
+      <img src="https://assets.codepen.io/2301174/icon-supervisor.svg" alt="">
+      <a href="{{path('region_index')}}" class="btn btn-primary">Enter</a>
+    </div>
+
+    <div class="box box-down blue">
+      <h2>Rooms</h2>
+      <p>Monitor service rooms</p>
+      <img src="https://assets.codepen.io/2301174/icon-supervisor.svg" alt="">
+      <a href="{{path('room_index')}}" class="btn btn-primary">Enter</a>
+    </div>
+  </div>
+  <div class="row2-container">
+    <div class="box orange">
+      <h2>Reservations</h2>
+      <p>Monitor clients Reservations</p>
+      <img src="https://assets.codepen.io/2301174/icon-supervisor.svg" alt="">
+      <a href="{{path('reservation_index')}}" class="btn btn-primary">Enter</a>
+      
+    </div>
+    
+  </div>
+
+</body>
+
+</html>
+
+{% endblock  %}

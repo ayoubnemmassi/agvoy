@@ -12,7 +12,9 @@
                 <th>Name</th>
                 <th>Presentation</th>
                 <th>Country</th>
-                <th>actions</th>
+               
+                <th>rooms</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -22,6 +24,7 @@
                 <td>{{ region.name }}</td>
                 <td>{{ region.presentation }}</td>
                 <td>{{ region.country }}</td>
+                <td>{{region.roomsinregions}}</td>
                 <td>
                     <a href="{{ path('region_show', {'id': region.id}) }}">show</a>
                     <a href="{{ path('region_edit', {'id': region.id}) }}">edit</a>
